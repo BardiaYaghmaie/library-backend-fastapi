@@ -160,3 +160,10 @@ def delete_taken_book(db: Session, taken_book_id: int):
         db.delete(db_taken_book)
         db.commit()
     return db_taken_book
+##
+def calculate_penalty(db: Session, expected_return_date: str, actual_return_date: str) -> int:
+    result = db.execute(
+        text("SELECT CalculatePenalty(:expectedReturnDate, :actualReturnDate) AS penalty"),
+        {"expectedReturnDate": expected_return_date, "actualReturnDate": actual_return_date}
+    ).fetchone()
+    return result['penalty'] if result else 0

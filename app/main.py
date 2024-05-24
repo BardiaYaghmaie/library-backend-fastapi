@@ -176,3 +176,12 @@ def delete_taken_book(taken_book_id: int, db: Session = Depends(get_db)):
     if db_taken_book is None:
         raise HTTPException(status_code=404, detail="Taken book not found")
     return db_taken_book
+
+@app.post("/calculate_penalty/", response_model=schemas.PenaltyResponse)
+def calculate_penalty(penalty_request: schemas.PenaltyRequest, db: Session = Depends(get_db)):
+    penalty = crud.calculate_penalty(
+        db=db,
+        expected_return_date=penalty_request.expected_return_date,
+        actual_return_date=penalty_request.actual_return_date
+    )
+    return schemas.PenaltyResponse(penalty=penalty)

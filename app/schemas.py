@@ -81,3 +81,10 @@ class TakenBook(TakenBookBase):
 
     class Config:
         orm_mode = True
+
+class PenaltyRequest(BaseModel):
+    expected_return_date: date
+    actual_return_date: date
+
+class PenaltyResponse(BaseModel):
+    penalty: int

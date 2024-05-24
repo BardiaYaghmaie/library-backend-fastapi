@@ -10,6 +10,11 @@ models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
 
+#readiness
+@app.get("/is_ready", status_code=200)
+def probe():
+    return "OK"
+
 # Dependency
 def get_db():
     db = SessionLocal()

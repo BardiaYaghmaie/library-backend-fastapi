@@ -10,11 +10,6 @@ models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
 
-#readiness
-@app.get("/is_ready", status_code=200)
-def probe():
-    return "OK"
-
 # Dependency
 def get_db():
     db = SessionLocal()
@@ -150,7 +145,11 @@ def delete_publisher(publisher_id: int, db: Session = Depends(get_db)):
 # TakenBook Endpoints
 @app.post("/takenbooks/", response_model=schemas.TakenBook)
 def create_taken_book(taken_book: schemas.TakenBookCreate, db: Session = Depends(get_db)):
-    return crud.create_taken_book(db=db, taken_book=taken_book)
+    try:
+        crud.create_taken_book(db=db, taken_book=taken_book)
+        return taken_book
+    except HTTPException as e:
+        raise e
 
 @app.get("/takenbooks/", response_model=List[schemas.TakenBook])
 def read_taken_books(skip: int = 0, limit: int = 10, db: Session = Depends(get_db)):

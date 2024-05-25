@@ -16,10 +16,10 @@ def get_books(db: Session, skip: int = 0, limit: int = 10):
     return db.query(models.Book).offset(skip).limit(limit).all()
 
 def get_book(db: Session, book_id: int):
-    return db.query(models.Book).filter(models.Book.id == book_id).first()
+    return db.query(models.Book).filter(models.Book.Id == book_id).first()
 
 def update_book(db: Session, book_id: int, book: schemas.BookCreate):
-    db_book = db.query(models.Book).filter(models.Book.id == book_id).first()
+    db_book = db.query(models.Book).filter(models.Book.Id == book_id).first()
     if db_book:
         for key, value in book.dict().items():
             setattr(db_book, key, value)
@@ -28,7 +28,7 @@ def update_book(db: Session, book_id: int, book: schemas.BookCreate):
     return db_book
 
 def delete_book(db: Session, book_id: int):
-    db_book = db.query(models.Book).filter(models.Book.id == book_id).first()
+    db_book = db.query(models.Book).filter(models.Book.Id == book_id).first()
     if db_book:
         db.delete(db_book)
         db.commit()
@@ -46,10 +46,10 @@ def get_members(db: Session, skip: int = 0, limit: int = 10):
     return db.query(models.Member).offset(skip).limit(limit).all()
 
 def get_member(db: Session, member_id: int):
-    return db.query(models.Member).filter(models.Member.id == member_id).first()
+    return db.query(models.Member).filter(models.Member.Id == member_id).first()
 
 def update_member(db: Session, member_id: int, member: schemas.MemberCreate):
-    db_member = db.query(models.Member).filter(models.Member.id == member_id).first()
+    db_member = db.query(models.Member).filter(models.Member.Id == member_id).first()
     if db_member:
         for key, value in member.dict().items():
             setattr(db_member, key, value)
@@ -58,7 +58,7 @@ def update_member(db: Session, member_id: int, member: schemas.MemberCreate):
     return db_member
 
 def delete_member(db: Session, member_id: int):
-    db_member = db.query(models.Member).filter(models.Member.id == member_id).first()
+    db_member = db.query(models.Member).filter(models.Member.Id == member_id).first()
     if db_member:
         db.delete(db_member)
         db.commit()
@@ -76,10 +76,10 @@ def get_employees(db: Session, skip: int = 0, limit: int = 10):
     return db.query(models.Employee).offset(skip).limit(limit).all()
 
 def get_employee(db: Session, employee_id: int):
-    return db.query(models.Employee).filter(models.Employee.id == employee_id).first()
+    return db.query(models.Employee).filter(models.Employee.Id == employee_id).first()
 
 def update_employee(db: Session, employee_id: int, employee: schemas.EmployeeCreate):
-    db_employee = db.query(models.Employee).filter(models.Employee.id == employee_id).first()
+    db_employee = db.query(models.Employee).filter(models.Employee.Id == employee_id).first()
     if db_employee:
         for key, value in employee.dict().items():
             setattr(db_employee, key, value)
@@ -88,7 +88,7 @@ def update_employee(db: Session, employee_id: int, employee: schemas.EmployeeCre
     return db_employee
 
 def delete_employee(db: Session, employee_id: int):
-    db_employee = db.query(models.Employee).filter(models.Employee.id == employee_id).first()
+    db_employee = db.query(models.Employee).filter(models.Employee.Id == employee_id).first()
     if db_employee:
         db.delete(db_employee)
         db.commit()
@@ -106,10 +106,10 @@ def get_publishers(db: Session, skip: int = 0, limit: int = 10):
     return db.query(models.Publisher).offset(skip).limit(limit).all()
 
 def get_publisher(db: Session, publisher_id: int):
-    return db.query(models.Publisher).filter(models.Publisher.id == publisher_id).first()
+    return db.query(models.Publisher).filter(models.Publisher.Id == publisher_id).first()
 
 def update_publisher(db: Session, publisher_id: int, publisher: schemas.PublisherCreate):
-    db_publisher = db.query(models.Publisher).filter(models.Publisher.id == publisher_id).first()
+    db_publisher = db.query(models.Publisher).filter(models.Publisher.Id == publisher_id).first()
     if db_publisher:
         for key, value in publisher.dict().items():
             setattr(db_publisher, key, value)
@@ -118,7 +118,7 @@ def update_publisher(db: Session, publisher_id: int, publisher: schemas.Publishe
     return db_publisher
 
 def delete_publisher(db: Session, publisher_id: int):
-    db_publisher = db.query(models.Publisher).filter(models.Publisher.id == publisher_id).first()
+    db_publisher = db.query(models.Publisher).filter(models.Publisher.Id == publisher_id).first()
     if db_publisher:
         db.delete(db_publisher)
         db.commit()
@@ -143,10 +143,10 @@ def get_taken_books(db: Session, skip: int = 0, limit: int = 10):
     return db.query(models.TakenBook).offset(skip).limit(limit).all()
 
 def get_taken_book(db: Session, taken_book_id: int):
-    return db.query(models.TakenBook).filter(models.TakenBook.id == taken_book_id).first()
+    return db.query(models.TakenBook).filter(models.TakenBook.Id == taken_book_id).first()
 
 def update_taken_book(db: Session, taken_book_id: int, taken_book: schemas.TakenBookCreate):
-    db_taken_book = db.query(models.TakenBook).filter(models.TakenBook.id == taken_book_id).first()
+    db_taken_book = db.query(models.TakenBook).filter(models.TakenBook.Id == taken_book_id).first()
     if db_taken_book:
         for key, value in taken_book.dict().items():
             setattr(db_taken_book, key, value)
@@ -155,7 +155,7 @@ def update_taken_book(db: Session, taken_book_id: int, taken_book: schemas.Taken
     return db_taken_book
 
 def delete_taken_book(db: Session, taken_book_id: int):
-    db_taken_book = db.query(models.TakenBook).filter(models.TakenBook.id == taken_book_id).first()
+    db_taken_book = db.query(models.TakenBook).filter(models.TakenBook.Id == taken_book_id).first()
     if db_taken_book:
         db.delete(db_taken_book)
         db.commit()

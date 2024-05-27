@@ -4,6 +4,7 @@ from typing import Optional
 
 # Book Schemas
 class BookBase(BaseModel):
+    PublisherId: int
     Name: str
     Genre: str
     Price: float

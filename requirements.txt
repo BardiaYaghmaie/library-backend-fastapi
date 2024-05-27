@@ -3,3 +3,4 @@ pydantic
 mysql-connector-python
 sqlalchemy
 typing
+starlette

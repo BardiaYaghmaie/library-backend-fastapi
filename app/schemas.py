@@ -25,6 +25,7 @@ class MemberBase(BaseModel):
     Email: Optional[str] = None
     Phone: Optional[str] = None
     Address: Optional[str] = None
+    DateJoined: date
 
 class MemberCreate(MemberBase):
     DateJoined: date

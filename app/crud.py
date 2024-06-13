@@ -170,3 +170,14 @@ def calculate_penalty(db: Session, expected_return_date: str, actual_return_date
 
 def get_event_logs(db: Session, skip: int = 0, limit: int = 10):
     return db.query(models.EventLog).offset(skip).limit(limit).all()
+
+def get_event_logs_books(db: Session, skip: int = 0, limit: int = 10):
+    return db.query(models.EventLogBook).offset(skip).limit(limit).all()
+
+def get_event_logs_members(db: Session, skip: int = 0, limit: int = 10):
+    return db.query(models.EventLogMember).offset(skip).limit(limit).all()
+
+def get_event_logs_employees(db: Session, skip: int = 0, limit: int = 10):
+    return db.query(models.EventLogEmployee).offset(skip).limit(limit).all()
+def get_event_logs_publishers(db: Session, skip: int = 0, limit: int = 10):
+    return db.query(models.EventLogPublishers).offset(skip).limit(limit).all()

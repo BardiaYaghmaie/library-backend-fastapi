@@ -52,3 +52,34 @@ class EventLog(Base):
     EventTime = Column(Date)
     EventData = Column(String(100))
 
+class EventLogBook(Base):
+    __tablename__ = 'Logs_Books'
+    Id = Column(Integer, primary_key=True, index=True)
+    EventType = Column(String(10))
+    TableName = Column(String(50))
+    EventTime = Column(Date)
+    EventData = Column(String(100))
+
+class EventLogMember(Base):
+    __tablename__ = 'Logs_Members'
+    Id = Column(Integer, primary_key=True, index=True)
+    EventType = Column(String(10))
+    TableName = Column(String(50))
+    EventTime = Column(Date)
+    EventData = Column(String(100))
+
+class EventLogEmployee(Base):
+    __tablename__ = 'Logs_Employees'
+    Id = Column(Integer, primary_key=True, index=True)
+    EventType = Column(String(10))
+    TableName = Column(String(50))
+    EventTime = Column(Date)
+    EventData = Column(String(100))
+
+class EventLogPublishers(Base):
+    __tablename__ = 'Logs_Publishers'
+    Id = Column(Integer, primary_key=True, index=True)
+    EventType = Column(String(10))
+    TableName = Column(String(50))
+    EventTime = Column(Date)
+    EventData = Column(String(100))

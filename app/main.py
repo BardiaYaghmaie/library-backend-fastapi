@@ -201,7 +201,22 @@ def get_event_logs(skip: int = 0, limit: int = 10, db: Session = Depends(get_db)
     event_logs=crud.get_event_logs(db, skip=skip, limit=limit)
     return event_logs
 
-# @app.get("/books/", response_model=List[schemas.Book])
-# def read_books(skip: int = 0, limit: int = 10, db: Session = Depends(get_db)):
-#     books = crud.get_books(db, skip=skip, limit=limit)
-#     return books
+@app.get("/event_logs/books/", response_model=List[schemas.EventLog])
+def get_event_logs_books(skip: int = 0, limit: int = 10, db: Session = Depends(get_db)):
+    event_logs_b=crud.get_event_logs_books(db, skip=skip, limit=limit)
+    return event_logs_b
+
+@app.get("/event_logs/members/", response_model=List[schemas.EventLog])
+def get_event_logs_books(skip: int = 0, limit: int = 10, db: Session = Depends(get_db)):
+    event_logs_m=crud.get_event_logs_members(db, skip=skip, limit=limit)
+    return event_logs_m
+
+@app.get("/event_logs/employees/", response_model=List[schemas.EventLog])
+def get_event_logs_employees(skip: int = 0, limit: int = 10, db: Session = Depends(get_db)):
+    event_logs_books_e=crud.get_event_logs_employees(db, skip=skip, limit=limit)
+    return event_logs_books_e
+
+@app.get("/event_logs/publishers/", response_model=List[schemas.EventLog])
+def get_event_logs_books(skip: int = 0, limit: int = 10, db: Session = Depends(get_db)):
+    event_logs_books_p=crud.get_event_logs_publishers(db, skip=skip, limit=limit)
+    return event_logs_books_p

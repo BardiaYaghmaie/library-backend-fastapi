@@ -43,3 +43,12 @@ class TakenBook(Base):
     IsTaken = Column(Boolean)
     BorrowDate = Column(Date, nullable=True)
     ReturnDate = Column(Date, nullable=True)
+
+class EventLog(Base):
+    __tablename__ = 'EventLog'
+    Id = Column(Integer, primary_key=True, index=True)
+    EventType = Column(String(10))
+    TableName = Column(String(50))
+    EventTime = Column(Date)
+    EventData = Column(String(100))
+

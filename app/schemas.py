@@ -1,5 +1,5 @@
 from pydantic import BaseModel
-from datetime import date
+from datetime import date, datetime
 from typing import Optional
 
 # Book Schemas
@@ -90,3 +90,15 @@ class PenaltyRequest(BaseModel):
 
 class PenaltyResponse(BaseModel):
     penalty: int
+
+class EventLogBase(BaseModel):
+    EventType: str
+    TableName: str
+    EventTime: datetime
+    EventData: str
+
+class EventLog(EventLogBase):
+    Id: int
+
+    class Config:
+        orm_mode = True

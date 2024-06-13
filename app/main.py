@@ -195,3 +195,13 @@ def calculate_penalty(penalty_request: schemas.PenaltyRequest, db: Session = Dep
         actual_return_date=penalty_request.actual_return_date
     )
     return schemas.PenaltyResponse(penalty=penalty)
+
+@app.get("/event_logs/", response_model=List[schemas.EventLog])
+def get_event_logs(skip: int = 0, limit: int = 10, db: Session = Depends(get_db)):
+    event_logs=crud.get_event_logs(db, skip=skip, limit=limit)
+    return event_logs
+
+# @app.get("/books/", response_model=List[schemas.Book])
+# def read_books(skip: int = 0, limit: int = 10, db: Session = Depends(get_db)):
+#     books = crud.get_books(db, skip=skip, limit=limit)
+#     return books

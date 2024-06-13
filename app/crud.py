@@ -167,3 +167,6 @@ def calculate_penalty(db: Session, expected_return_date: str, actual_return_date
         {"expectedReturnDate": expected_return_date, "actualReturnDate": actual_return_date}
     ).fetchone()
     return result['penalty'] if result else 0
+
+def get_event_logs(db: Session, skip: int = 0, limit: int = 10):
+    return db.query(models.EventLog).offset(skip).limit(limit).all()
